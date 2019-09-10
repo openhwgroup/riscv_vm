@@ -3,17 +3,19 @@ The OpenHW Group's RISC-V Virtual Machine (riscv_vm) is intended for anyone want
    * RISC-V SW tool chain using the Eclipse-IDE
    * RISC-V Imperas OVPSim model
    * RISC-V Verilator model
-The files in the ~/bin directory are used to create the VM Linux image after Ubuntu 18.04LT has been installed. The VM'sminimal configuration is 2CPU/4G-RAM/20GB-DISK with USB 2.0 enabled
-To donwload a protable *.osa appliance file, go to: [RISCV_VM *.OVA image on Google Drive](https://drive.google.com/drive/folders/18njYttFpczl-CrHkZ7HQ-lLf-w2fBcL9)
+   * The files in the ~/bin directory are used to create the VM Linux image after Ubuntu 18.04LT has been installed. 
+   * The VM'sminimal configuration is 2CPU/4G-RAM/20GB-DISK with USB 2.0 enabled
+   * To donwload a protable *.osa appliance file, go to:
+     - [RISCV_VM *.OVA image on Google Drive](https://drive.google.com/drive/folders/18njYttFpczl-CrHkZ7HQ-lLf-w2fBcL9)
    * **Note that the virtual machine userID /password is _user/abc123_**
  
 ## Importing VM into VirtualBox on Windows10 host
 The instructions to install and run are:
 1. Open a Windows Command-line prompt with Admin privileges:
    * Press the Windows-Start key
-   * write cmd to search for the program
+   * search for the _"cmd.exe"_ program
    * right-click on CMD icon
-   * select “Run as administrator”
+   * select _“Run as administrator”_
 2. Download and run the installed batch file available in this repository: 
    - [riscv_vm Windows10 Install script](https://github.com/openhwgroup/riscv_vm/blob/master/riscv_vm_win10_install.bat)
 6. Import the *.OVA “appliance” into VirtualBox
