@@ -64,7 +64,9 @@ echo "install.folder=/home/user/toolchain" >> /home/user/eclipse/configuration/.
 # gcc & friends location
 echo "eclipse.preferences.version=1" > /home/user/eclipse/configuration/.settings/ilg.gnumcueclipse.managedbuild.cross.riscv.prefs 
 # (magic number comes from https://github.com/gnu-mcu-eclipse/eclipse-plugins/blob/ce601cf2ec20cba90d9f2c2fbdb236b5fd7a6385/bundles/ilg.gnumcueclipse.managedbuild.cross.riscv/src/ilg/gnumcueclipse/managedbuild/cross/riscv/ToolchainDefinition.java#L30)
-echo "toolchain.path.512258282=/home/user/toolchain/riscv32-unknown-elf-gcc/bin" >> /home/user/eclipse/configuration/.settings/ilg.gnumcueclipse.managedbuild.cross.riscv.prefs
+#echo "toolchain.path.512258282=/home/user/toolchain/riscv32-unknown-elf-gcc/bin" >> /home/user/eclipse/configuration/.settings/ilg.gnumcueclipse.managedbuild.cross.riscv.prefs
+# Modified for pre-release version
+echo "toolchain.path.512258282=/home/user/pulp/riscv32-unknown-elf/bin" >> /home/user/eclipse/configuration/.settings/ilg.gnumcueclipse.managedbuild.cross.riscv.prefs
 
 rm rv32m1_sdk_riscv.tar.gz rv32m1_sdk_riscv_installer.sh Toolchain_Linux.tar.gz toolchain/riscv32-unknown-elf-gcc.tar.gz toolchain/openocd.tar.gz
 
