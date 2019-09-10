@@ -15,7 +15,7 @@ The instructions to install and run are:
   c.	right-click on CMD icon
   d.	select “Run as administrator”
 2.	Download and run the installed batch file available in this repository: 
-  a.	
+  a.	https://github.com/openhwgroup/riscv_vm/blob/master/riscv_vm_win10_install.bat
 6.	Import the *.OVA “appliance” into VirtualBox
 7.	Start the VcXsrv client
 8.	Start git-bash to run the following:
