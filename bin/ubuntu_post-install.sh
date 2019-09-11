@@ -44,11 +44,12 @@ set -eux
 # libudev package not available
 echo "Updating Ubuntu"; echo""
 
-apt-get install -y openssh-server xauth git-core lsb-core xorg vim-gtk3 dos2unix autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libusb-1.0-0-dev libudev1 libudev-dev g++ openjdk-8-jdk libfl2 libfl-dev
+apt-get install -y openssh-server xauth git-core lsb-core xorg vim-gtk3 dos2unix autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libusb-1.0-0-dev libudev1 libudev-dev g++ openjdk-8-jdk libfl2 libfl-dev lynx
 
 apt-get upgrade
 apt-get clean
 apt-get autoremove --purge
+cd "$(dirname "$0")"
 
 #--- 
 # Install PULP-Platform GNU toolchain
@@ -65,11 +66,62 @@ verilator_install.sh
 sudo -u user eclipse-mcu_install.sh
 
 #---
-# Install rv32m1 and OpenOCD tools
-#---
-sudo -u user rv32m1_install.sh
-
-#---
 # Install SEGGER J-Link drivers
 #---
+read -n 1 -s -r -p "Press any key to go to text-based web browser to download JLink SW and documentation"
+lynx https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb
 apt-get install -f ./JLink_Linux_V650a_x86_64.deb
+
+#---
+# append to ~/.bashrc
+#---
+cat > $HOME/.editor <<EOF
+vim
+EOF
+
+if [ -f  ../LICENSE ] 
+then
+  cp ../LICENSE $HOME/Apache_license_v2.0.txt
+fi
+
+cat > $HOME/.BTADS_welcom.txt <<EOF
+#-----------------------------------------------------------------------------
+# Copyright (c) 2019 BTA Design Services Inc.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#     http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#------------------------------------------------------------------------------
+# Author:   Alfredo Herrera (aherrera@btadesignservices.com) 
+# Created:  10/Sep/2019 
+# Revision: _beta_
+#------------------------------------------------------------------------------
+EOF
+
+cat >> $HOME/.bashrc <<EOF
+
+#------------------------------------------------------------------------------
+# Additional settings
+#------------------------------------------------------------------------------
+if [ -f  $HOME/.editor ] 
+then
+    EDITOR=`cat $HOME/.editor`
+fi
+export LD_LIBRARY_PATH=/usr/local/lib
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export PATH=$PATH:$JAVA_HOME/bin:/home/user/eclipse:/home/user/riscv-ovpsim/bin
+export RISCV32GCC_DIR="/home/user/pulp"
+#export PULP_RISCV_GCC_TOOLCHAIN="/home/user/pulp"
+
+cat $HOME/.BTADS_welcome.txt
+EOF
+
+echo "The installation is done"
+echo "Note: use 'evince' to open PDF documents from the command-line prompt"
+

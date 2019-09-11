@@ -28,8 +28,12 @@ echo "============================"
 echo "INSTALL TOOLS"
 echo "============================"
 brew install telnet git wget
-wget https://download.virtualbox.org/virtualbox/6.0.10/VirtualBox-6.0.10-132072-Win.exe
+wget https://download.virtualbox.org/virtualbox/6.0.10/VirtualBox-6.0.10-132072-OSX.dmg
 wget https://download.virtualbox.org/virtualbox/6.0.10/Oracle_VM_VirtualBox_Extension_Pack-6.0.10.vbox-extpack
 brew install caskroom/cask/brew-cask 2> /dev/null
 brew cask install xquartz
+
+echo "install VirtualBox from the following path:"
+pwd
+echo "and add the extensions pack from teh GUI"
 
