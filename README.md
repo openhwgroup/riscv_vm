@@ -33,9 +33,12 @@ The instructions to install and run are:
    - ssh -Yv user@<_IP of riscv_vm2_>
    - In my case that is: ssh -Yv user@192.168.56.101
 
-## Importing VM into VirtualBox on Linux host
-The instructions to install and run are:
-   * TBD
+## Importing VM into VirtualBox on Ubuntu 18.04LT host (UNTESTED)
+On a Linux machine with Ubuntu 18.04LT installed, follow these instructions:
+1. clone the repo from your Linux machine:
+   - git clone git@github.com:openhwgroup/riscv_vm.git
+2. run the installe and follow the prompts on the screen:
+   - sudo riscv_vm/bin/ubuntu_post-install.sh
  
 ## Importing VM into VirtualBox on MacOS host
 The instructions to install and run are:
