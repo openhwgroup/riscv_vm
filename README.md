@@ -1,7 +1,7 @@
 # riscv_vm
 &nbsp;<img src="https://github.com/openhwgroup/riscv_vm/blob/master/RISCV_VM.png" width="200" title="RISC-V VM">
 
-The OpenHW Group's RISC-V Virtual Machine (riscv_vm) is intended for anyone wanting to study, configure as-preferred, modify, implement or release hardware based the RISC-V Instruction Set Architecture. The VM is preconfigured for RISC-V HW development.
+The OpenHW Group's RISC-V Virtual Machine (riscv_vm) is intended for anyone wanting to study, configure as-preferred, modify, implement or release hardware based the RISC-V Instruction Set Architecture. The VM is preconfigured for RISC-V HW development. It was developed and tested with VirtualBox 6.0.10 but not on other virtualization SW. As of Sept 10, 2019, it includes most of the SW described in the https://open-isa.org/get-started/ webpage, except for NXP's VEGA board SDK.
    * RISC-V SW tool chain using the Eclipse-IDE
    * RISC-V Imperas OVPSim model
    * RISC-V Verilator model
