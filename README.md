@@ -35,10 +35,13 @@ The instructions to install and run are:
 
 ## Installing the riscv_vm tools directly on Ubuntu 18.04LT host (UNTESTED)
 On a Linux machine with Ubuntu 18.04LT installed, follow these instructions:
-1. clone the repo from your Linux machine:
+The instructions to install and run are:
+1. From a command-line terminal
+2. clone the repo from your Linux machine:
    - git clone git@github.com:openhwgroup/riscv_vm.git
-2. run the installe and follow the prompts on the screen:
-   - sudo riscv_vm/bin/ubuntu_post-install.sh
+3. Run the installer script in "sudo" mode: 
+   - sudo riscv_vm/riscv_vm_ubuntu_install.sh
+4. Import the *.OVA “appliance” into VirtualBox
  
 ## Importing VM into VirtualBox on MacOS host
 The instructions to install and run are:
