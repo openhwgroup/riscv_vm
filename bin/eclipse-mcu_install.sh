@@ -36,7 +36,7 @@ fi
 set -eux 
 
 echo "Installing Eclipse-IDE and MCU plugins"; echo""
-cd /home/user
+cd /home/$USERNAME
 curl -L https://github.com/gnu-mcu-eclipse/org.eclipse.epp.packages/releases/download/v4.5.1-20190101-2018-12/20190101-2023-gnumcueclipse-4.5.1-2018-12-R-linux.gtk.x86_64.tar.gz > 20190101-2023-gnumcueclipse-4.5.1-2018-12-R-linux.gtk.x86_64.tar.gz
 curl -L https://github.com/riscv/riscv-ovpsim/archive/master.zip > riscv-ovpsim-master.zip
 # Extract eclipse that includes GNU MCU plugins, eclipse executable will be ./eclipse/eclipse
@@ -46,6 +46,6 @@ tar xf 20190101-2023-gnumcueclipse-4.5.1-2018-12-R-linux.gtk.x86_64.tar.gz
 unzip riscv-ovpsim-master.zip
 mv riscv-ovpsim-master riscv-ovpsim
 
-cd /home/user
+cd /home/$USERNAME
 rm 20190101-2023-gnumcueclipse-4.5.1-2018-12-R-linux.gtk.x86_64.tar.gz riscv-ovpsim-master.zip
 

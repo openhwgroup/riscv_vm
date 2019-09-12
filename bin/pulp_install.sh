@@ -37,11 +37,11 @@ set -eux
 # Install PULP-platform GNU toolchain
 #--- 
 echo "Installing PULP GNU toolchain"; echo""
-cd /home/user
+cd /home/$USERNAME
 git clone --recursive https://github.com/pulp-platform/pulp-riscv-gnu-toolchain
 cd pulp-riscv-gnu-toolchain
 ./configure --prefix=/home/user/pulp --with-arch=rv32imc --with-cmodel=medlow --enable-multilib
 make
-cd /home/user
+cd /home/$USERNAME
 rm -rf pulp-riscv-gnu-toolchain
 

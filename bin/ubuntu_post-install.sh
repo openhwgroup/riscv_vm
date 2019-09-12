@@ -40,6 +40,7 @@ fi
 # Show commands being used and error out on unexpected situations
 set -eux 
 
+export USERNAME=$(logname)
 #--- 
 # libudev package not available
 echo "Updating Ubuntu"; echo""
@@ -54,7 +55,7 @@ cd "$(dirname "$0")"
 #--- 
 # Install PULP-Platform GNU toolchain
 #--- 
-sudo -u user pulp_install.sh
+sudo -u $USERNAME pulp_install.sh
 
 #---
 # Install Verilator tool
@@ -63,7 +64,7 @@ verilator_install.sh
 
 #---
 # Install Elipse-IDE and MCU plugins
-sudo -u user eclipse-mcu_install.sh
+sudo -u $USERNAME eclipse-mcu_install.sh
 
 #---
 # Install SEGGER J-Link drivers
@@ -75,16 +76,12 @@ apt-get install -f ./JLink_Linux_V650a_x86_64.deb
 #---
 # append to ~/.bashrc
 #---
-cat > $HOME/.editor <<EOF
-vim
-EOF
-
-if [ -f  ../LICENSE ] 
+if [ -f  /home/$USERNAME/LICENSE ] 
 then
-  cp ../LICENSE $HOME/Apache_license_v2.0.txt
+  cp ../LICENSE /home/$USERNAME/Apache_license_v2.0.txt
 fi
 
-cat > $HOME/.BTADS_welcom.txt <<EOF
+cat > /home/$USERNAME/.BTADS_welcom.txt <<EOF
 #-----------------------------------------------------------------------------
 # Copyright (c) 2019 BTA Design Services Inc.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -103,14 +100,14 @@ cat > $HOME/.BTADS_welcom.txt <<EOF
 #------------------------------------------------------------------------------
 EOF
 
-cat >> $HOME/.bashrc <<EOF
+cat >> /home/$USERNAME/.bashrc <<EOF
 
 #------------------------------------------------------------------------------
 # Additional settings
 #------------------------------------------------------------------------------
-if [ -f  $HOME/.editor ] 
+if [ -f  /home/$USERNAME/.editor ] 
 then
-    EDITOR=`cat $HOME/.editor`
+    EDITOR=`cat /home/$USERNAME/.editor`
 fi
 export LD_LIBRARY_PATH=/usr/local/lib
 
@@ -119,7 +116,7 @@ export PATH=$PATH:$JAVA_HOME/bin:/home/user/eclipse:/home/user/riscv-ovpsim/bin
 export RISCV32GCC_DIR="/home/user/pulp"
 #export PULP_RISCV_GCC_TOOLCHAIN="/home/user/pulp"
 
-cat $HOME/.BTADS_welcome.txt
+cat /home/$USERNAME/.BTADS_welcome.txt
 EOF
 
 echo "The installation is done"

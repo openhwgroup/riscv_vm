@@ -38,21 +38,21 @@ set -eux
 #---
 # Install rv32m1 SDK tools
 echo "Installing rv32m1 tools"; echo""
-cd /home/user
+cd /home/$USERNAME
 
-cd /home/user
+cd /home/$USERNAME
 # Extract toolchain, takes two steps as there are archives in Toolchain_Linux.tar.gz)
 mkdir toolchain
 
 # Set the toolchain defaults for GNU MCU plug-ins to what we just "installed"
-mkdir -p /home/user/eclipse/configuration/.settings/
+mkdir -p /home/$USERNAME/eclipse/configuration/.settings/
 # openocd location
-echo "eclipse.preferences.version=1" > /home/user/eclipse/configuration/.settings/ilg.gnumcueclipse.debug.gdbjtag.openocd.prefs 
-echo "install.folder=/home/user/toolchain" >> /home/user/eclipse/configuration/.settings/ilg.gnumcueclipse.debug.gdbjtag.openocd.prefs 
+echo "eclipse.preferences.version=1" > /home/$USERNAME/eclipse/configuration/.settings/ilg.gnumcueclipse.debug.gdbjtag.openocd.prefs 
+echo "install.folder=/home/$USERNAME/toolchain" >> /home/$USERNAME/eclipse/configuration/.settings/ilg.gnumcueclipse.debug.gdbjtag.openocd.prefs 
 
 # gcc & friends location
-echo "eclipse.preferences.version=1" > /home/user/eclipse/configuration/.settings/ilg.gnumcueclipse.managedbuild.cross.riscv.prefs 
+echo "eclipse.preferences.version=1" > /home/$USERNAME/eclipse/configuration/.settings/ilg.gnumcueclipse.managedbuild.cross.riscv.prefs 
 # (magic number comes from https://github.com/gnu-mcu-eclipse/eclipse-plugins/blob/ce601cf2ec20cba90d9f2c2fbdb236b5fd7a6385/bundles/ilg.gnumcueclipse.managedbuild.cross.riscv/src/ilg/gnumcueclipse/managedbuild/cross/riscv/ToolchainDefinition.java#L30)
 # Modified for pre-release version
-echo "toolchain.path.512258282=/home/user/pulp/riscv32-unknown-elf/bin" >> /home/user/eclipse/configuration/.settings/ilg.gnumcueclipse.managedbuild.cross.riscv.prefs
+echo "toolchain.path.512258282=/home/$USERNAME/pulp/riscv32-unknown-elf/bin" >> /home/$USERNAME/eclipse/configuration/.settings/ilg.gnumcueclipse.managedbuild.cross.riscv.prefs
 

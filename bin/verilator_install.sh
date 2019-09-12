@@ -35,7 +35,7 @@ fi
 set -eux 
 
 echo "Installing Verilator tool"; echo""
-cd /home/user
+cd /home/$USERNAME
 git clone http://git.veripool.org/git/verilator
 
 pushd verilator
@@ -47,5 +47,5 @@ make
 make install
 popd
 
-rm -rf /home/user/verilator
+rm -rf /home/$USERNAME/verilator
 
