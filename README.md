@@ -33,15 +33,21 @@ The instructions to install and run are:
    - ssh -Yv user@<_IP of riscv_vm2_>
    - In my case that is: ssh -Yv user@192.168.56.101
 
-## Installing the riscv_vm tools directly on Ubuntu 18.04LT host (UNTESTED)
-On a Linux machine with Ubuntu 18.04LT installed, follow these instructions:
-The instructions to install and run are:
+## Installing the riscv_vm tools directly on Ubuntu 18.04LTS host (UNTESTED)
+On Ubuntu 18.04 the virtual box that is included by default is 5.x. Follow these instructions to download and install 6.x from virtualbox instead:
 1. From a command-line terminal
 2. clone the repo from your Linux machine:
    - git clone git@github.com:openhwgroup/riscv_vm.git
 3. Run the installer script in "sudo" mode: 
    - sudo riscv_vm/riscv_vm_ubuntu_install.sh
 4. Import the *.OVA “appliance” into VirtualBox
+5. There does not seem to be host networks by default in virtualbox on Linux. To add:
+   - elect from the GUI menu \[File] -> \[Host Network Manager]
+   - then \[Network] -> \[Create]
+   - In the newly created network enable the DHCP server
+6. The VM may start in error related to host network, you may resolve this by simply opening the Machine's network settings and pressing ok (with perhaps a dummy edit).
+7. The installer script installs both VirtualBox and the corresponding extension pack for support of USB. The script also adds the current user to the vboxusers group: 
+   * **NOTE**: log-off and on again for new groups to take effect
  
 ## Importing VM into VirtualBox on MacOS host
 The instructions to install and run are:
