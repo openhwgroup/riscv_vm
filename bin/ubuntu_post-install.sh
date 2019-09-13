@@ -50,12 +50,13 @@ apt-get install -y openssh-server xauth git-core lsb-core xorg vim-gtk3 dos2unix
 apt-get upgrade
 apt-get clean
 apt-get autoremove --purge
-cd "$(dirname "$0")"
+export BINDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd ${BINDIR}
 
 #--- 
 # Install PULP-Platform GNU toolchain
 #--- 
-sudo -u $USERNAME pulp_install.sh
+sudo -u ${USERNAME} pulp_install.sh
 
 #---
 # Install Verilator tool
@@ -64,7 +65,14 @@ verilator_install.sh
 
 #---
 # Install Elipse-IDE and MCU plugins
-sudo -u $USERNAME eclipse-mcu_install.sh
+#---
+sudo -u ${USERNAME} eclipse-mcu_install.sh
+
+
+#---
+# Install NXP VEGA board SDK
+#---
+sudo -u ${USERNAME} rv32m1_install.sh
 
 #---
 # Install SEGGER J-Link drivers
@@ -76,12 +84,12 @@ apt-get install -f ./JLink_Linux_V650a_x86_64.deb
 #---
 # append to ~/.bashrc
 #---
-if [ -f  /home/$USERNAME/LICENSE ] 
+if [ -f  /home/${USERNAME}/LICENSE ] 
 then
-  cp ../LICENSE /home/$USERNAME/Apache_license_v2.0.txt
+  cp ../LICENSE /home/${USERNAME}/Apache_license_v2.0.txt
 fi
 
-cat > /home/$USERNAME/.BTADS_welcom.txt <<EOF
+cat > /home/${USERNAME}/.BTADS_welcom.txt <<EOF
 #-----------------------------------------------------------------------------
 # Copyright (c) 2019 BTA Design Services Inc.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -100,14 +108,14 @@ cat > /home/$USERNAME/.BTADS_welcom.txt <<EOF
 #------------------------------------------------------------------------------
 EOF
 
-cat >> /home/$USERNAME/.bashrc <<EOF
+cat >> /home/${USERNAME}/.bashrc <<EOF
 
 #------------------------------------------------------------------------------
 # Additional settings
 #------------------------------------------------------------------------------
-if [ -f  /home/$USERNAME/.editor ] 
+if [ -f  /home/${USERNAME}/.editor ] 
 then
-    EDITOR=`cat /home/$USERNAME/.editor`
+    EDITOR=`cat /home/${USERNAME}/.editor`
 fi
 export LD_LIBRARY_PATH=/usr/local/lib
 
@@ -116,9 +124,10 @@ export PATH=$PATH:$JAVA_HOME/bin:/home/user/eclipse:/home/user/riscv-ovpsim/bin
 export RISCV32GCC_DIR="/home/user/pulp"
 #export PULP_RISCV_GCC_TOOLCHAIN="/home/user/pulp"
 
-cat /home/$USERNAME/.BTADS_welcome.txt
+cat /home/${USERNAME}/.BTADS_welcome.txt
 EOF
 
 echo "The installation is done"
-echo "Note: use 'evince' to open PDF documents from the command-line prompt"
+echo "Note1: use 'evince' to open PDF documents from the command-line prompt"
+echo "Note2: you may use 'link2 -g <<http:...>>' for web browsing" 
 
