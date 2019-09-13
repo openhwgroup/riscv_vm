@@ -10,6 +10,7 @@ The OpenHW Group's RISC-V Virtual Machine (riscv_vm) is intended for anyone want
    * To donwload a protable *.osa appliance file, go to:
      - [RISCV_VM *.OVA image on Google Drive](https://drive.google.com/drive/folders/18njYttFpczl-CrHkZ7HQ-lLf-w2fBcL9)
    * **Note that the virtual machine userID /password is _user/abc123_**
+   * **In order to comply with 3rd party SW components within the VEGA SDK, the SDK must must installed directly from the open-isa.org site. Once your VM is running on your machine, install the SDK within the VM by following the instructions located [here](https://open-isa.org/get-started/)**
  
 ## Importing VM into VirtualBox on Windows10 host
 The instructions to install and run are:
@@ -48,6 +49,16 @@ On Ubuntu 18.04 the virtual box that is included by default is 5.x. Follow these
 6. The VM may start in error related to host network, you may resolve this by simply opening the Machine's network settings and pressing ok (with perhaps a dummy edit).
 7. The installer script installs both VirtualBox and the corresponding extension pack for support of USB. The script also adds the current user to the vboxusers group: 
    * **NOTE**: log-off and on again for new groups to take effect
+8. Your Linux kernel may not be compatible with VirtualBox, if the VirtualBox isntallation fails with a message similar to this:
+```
+WARNING: The vboxdrv kernel module is not loaded. Either there is no module
+         available for the current kernel (5.2.11-100.fc29.x86_64) or it failed to
+         load. Please recompile the kernel module and install it by
+
+           sudo /sbin/vboxconfig
+
+         You will not be able to start VMs until this problem is fixed.
+```
  
 ## Importing VM into VirtualBox on MacOS host
 The instructions to install and run are:
