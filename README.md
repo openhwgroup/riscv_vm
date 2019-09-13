@@ -49,7 +49,7 @@ On Ubuntu 18.04 the virtual box that is included by default is 5.x. Follow these
 6. The VM may start in error related to host network, you may resolve this by simply opening the Machine's network settings and pressing ok (with perhaps a dummy edit).
 7. The installer script installs both VirtualBox and the corresponding extension pack for support of USB. The script also adds the current user to the vboxusers group: 
    * **NOTE**: log-off and on again for new groups to take effect
-8. Your Linux kernel may not be compatible with VirtualBox, if the VirtualBox isntallation fails with a message similar to this:
+8. Your Linux kernel may not be compatible with VirtualBox, if the isntallation fails with a message similar to this:
 ```
 WARNING: The vboxdrv kernel module is not loaded. Either there is no module
          available for the current kernel (5.2.11-100.fc29.x86_64) or it failed to
