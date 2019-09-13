@@ -39,10 +39,25 @@ set -eux
 # Install rv32m1 SDK tools
 echo "Installing rv32m1 tools"; echo""
 cd /home/$USERNAME
+mkdir /home/$USERNAME/vega
 
-cd /home/$USERNAME
+curl -L https://github.com/open-isa-org/open-isa.org/releases/download/1.0.0/rv32m1_sdk_riscv_installer.sh > rv32m1_sdk_riscv_installer.sh
+# Convert SDK shell script into the tar file -- this implictly accepts the license and extracts to /home/user/vega
+ARCHIVE=$(awk '/^__ARCHIVE__/ {print NR + 1; exit 0; }' "rv32m1_sdk_riscv_installer.sh")
+tail -n+${ARCHIVE} "rv32m1_sdk_riscv_installer.sh" | tar -xz > /dev/null 2>&1 || true
+pushd /home/$USERNAME/vega
+tar xf /home/$USERNAME/rv32m1_sdk_riscv.tar.gz
+popd
+
 # Extract toolchain, takes two steps as there are archives in Toolchain_Linux.tar.gz)
-mkdir toolchain
+mkdir /home/$USERNAME/toolchain
+
+curl -L https://github.com/open-isa-org/open-isa.org/releases/download/1.0.0/Toolchain_Linux.tar.gz > Toolchain_Linux.tar.gz
+pushd toolchain
+tar xf /home/user/Toolchain_Linux.tar.gz # this makes tar files for next lines
+tar xf riscv32-unknown-elf-gcc.tar.gz
+tar xf openocd.tar.gz
+popd
 
 # Set the toolchain defaults for GNU MCU plug-ins to what we just "installed"
 mkdir -p /home/$USERNAME/eclipse/configuration/.settings/
@@ -54,5 +69,7 @@ echo "install.folder=/home/$USERNAME/toolchain" >> /home/$USERNAME/eclipse/confi
 echo "eclipse.preferences.version=1" > /home/$USERNAME/eclipse/configuration/.settings/ilg.gnumcueclipse.managedbuild.cross.riscv.prefs 
 # (magic number comes from https://github.com/gnu-mcu-eclipse/eclipse-plugins/blob/ce601cf2ec20cba90d9f2c2fbdb236b5fd7a6385/bundles/ilg.gnumcueclipse.managedbuild.cross.riscv/src/ilg/gnumcueclipse/managedbuild/cross/riscv/ToolchainDefinition.java#L30)
 # Modified for pre-release version
-echo "toolchain.path.512258282=/home/$USERNAME/pulp/riscv32-unknown-elf/bin" >> /home/$USERNAME/eclipse/configuration/.settings/ilg.gnumcueclipse.managedbuild.cross.riscv.prefs
+echo "toolchain.path.512258282=/home/$USERNAME/toolchain/riscv32-unknown-elf-gcc/bin" >> /home/$USERNAME/eclipse/configuration/.settings/ilg.gnumcueclipse.managedbuild.cross.riscv.prefs
+
+rm rv32m1_sdk_riscv.tar.gz rv32m1_sdk_riscv_installer.sh Toolchain_Linux.tar.gz toolchain/riscv32-unknown-elf-gcc.tar.gz toolchain/openocd.tar.gz
 
