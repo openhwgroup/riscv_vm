@@ -28,7 +28,7 @@ The instructions to install and run are:
 6. Start git-bash to run the following:
    - Start the VM from the git-bash in head-less mode (your path may be different):
   ```
-        <PROMPT$>/c/bta_cadtree/VirtualBox/vb6_0_10/VBoxManage startvm riscv_vm2 --type headless
+        <PROMPT$>/c/bta_cadtree/VirtualBox/vb6_0_10/VBoxManage startvm riscv_vm --type headless
         <PROMPT$>export DISPLAY=localhost:0.0
   ```
 7. SSH into the VM using the command:
