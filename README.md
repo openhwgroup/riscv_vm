@@ -78,7 +78,7 @@ The instructions to install and run are:
 6. Right click on the XQuartz icon in the dock and select Applications > Terminal.  This should bring up a new xterm terminal windows to run the following:
    - Start the VM from the xquartz-terminal in head-less mode (your path may be different):
   ```
-        <PROMPT$>/c/bta_cadtree/VirtualBox/vb6_0_10/VBoxManage startvm riscv_vm2 --type headless
+        <PROMPT$>/c/bta_cadtree/VirtualBox/vb6_0_10/VBoxManage startvm riscv_vm --type headless
         <PROMPT$>export DISPLAY=localhost:0.0
   ```
 7. SSH into the VM using the command:
