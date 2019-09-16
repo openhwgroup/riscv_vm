@@ -93,7 +93,7 @@ cd
 mkdir -p /home/${USERNAME}/eclipse/configuration/.settings/
 echo "eclipse.preferences.version=1" > /home/${USERNAME}/eclipse/configuration/.settings/ilg.gnumcueclipse.debug.gdbjtag.openocd.prefs 
 echo "install.folder=/home/${USERNAME}/toolchain" >> /home/${USERNAME}/eclipse/configuration/.settings/ilg.gnumcueclipse.debug.gdbjtag.openocd.prefs 
-#
+
 #---
 # Set the toolchain defaults for g++
 #---

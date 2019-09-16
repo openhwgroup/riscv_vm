@@ -45,7 +45,7 @@ export USERNAME=$(logname)
 # libudev package not available
 echo "Updating Ubuntu"; echo""
 
-apt-get install -y openssh-server xauth git-core lsb-core xorg vim-gtk3 dos2unix autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libusb-1.0-0-dev libudev1 libudev-dev g++ openjdk-8-jdk libfl2 libfl-dev lynx
+apt-get install -y openssh-server xauth git-core lsb-core xorg vim-gtk3 dos2unix autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libusb-1.0-0-dev libudev1 libudev-dev g++ openjdk-8-jdk libfl2 libfl-dev links2 cmake ninja-build ccache dfu-util device-tree-compiler python3-pip python3-setuptools python3-tk python3-wheel xz-utils gcc-multilib 
 
 apt-get upgrade
 apt-get clean
@@ -68,7 +68,6 @@ verilator_install.sh
 #---
 sudo -u ${USERNAME} eclipse-mcu_install.sh
 
-
 #---
 # Install NXP VEGA board SDK
 #---
@@ -77,9 +76,23 @@ sudo -u ${USERNAME} rv32m1_install.sh
 #---
 # Install SEGGER J-Link drivers
 #---
-read -n 1 -s -r -p "Press any key to go to text-based web browser to download JLink SW and documentation"
-lynx https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb
-apt-get install -f ./JLink_Linux_V650a_x86_64.deb
+if [ -d /opt/SEGGER ]; then
+   echo "SEGGER SW already installled"
+else
+  read -n 1 -s -r -p "Press any key to go to text-based web browser to download JLink SW and documentation"
+  lynx https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb
+  apt-get install -f ./JLink_Linux_V650a_x86_64.deb
+fi
+
+#---
+# Setun zephyr environment
+#---
+sudo -u ${USERNAME} pip3 install --user cmake
+sudo -u ${USERNAME} pip3 install --user -U west
+~/.local/bin/west init zephyrproject
+(cd zephyrproject && ~/.local/bin/west update)
+(cd zephyrproject && pip3 install --user -r zephyr/scripts/requirements.txt)
+(cd zephyrproject && git clone https://github.com/micropython/micropython.git)
 
 #---
 # append to ~/.bashrc
@@ -120,7 +133,7 @@ fi
 export LD_LIBRARY_PATH=/usr/local/lib
 
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-export PATH=$PATH:$JAVA_HOME/bin:/home/user/eclipse:/home/user/riscv-ovpsim/bin
+export PATH=$PATH:$JAVA_HOME/bin:/home/user/eclipse:/home/user/riscv-ovpsim/bin:/home/user/.local/bin
 export RISCV32GCC_DIR="/home/user/pulp"
 #export PULP_RISCV_GCC_TOOLCHAIN="/home/user/pulp"
 
