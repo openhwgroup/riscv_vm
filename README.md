@@ -34,6 +34,8 @@ The instructions to install and run are:
 7. SSH into the VM using the command:
    - ssh -Yv user@<_IP of riscv_vm2_>
    - In my case that is: ssh -Yv user@192.168.56.101
+8. Finally, install the JLink driver for the host system by following the instructions here:
+   - https://www.segger.com/downloads/jlink/
 
 ## Installing the riscv_vm tools directly on Ubuntu 18.04LTS host (UNTESTED)
 On Ubuntu 18.04 the virtual box that is included by default is 5.x. Follow these instructions to download and install 6.x from virtualbox instead:
@@ -60,7 +62,9 @@ WARNING: The vboxdrv kernel module is not loaded. Either there is no module
 
          You will not be able to start VMs until this problem is fixed.
 ```
- 
+9. Finally, install the JLink driver for the host system by following the instructions here:
+   - https://www.segger.com/downloads/jlink/
+   
 ## Importing VM into VirtualBox on MacOS host
 The instructions to install and run are:
 1. Open the “Terminal” application, found in /Applications/Utilities/
@@ -80,3 +84,5 @@ The instructions to install and run are:
 7. SSH into the VM using the command:
    - ssh -Yv user@<_IP of riscv_vm2_>
    - In my case that is: ssh -Yv user@192.168.56.101
+8. Finally, install the JLink driver for the host system by following the instructions here:
+   - https://www.segger.com/downloads/jlink/
