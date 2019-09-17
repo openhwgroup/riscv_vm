@@ -9,6 +9,8 @@ The OpenHW Group's RISC-V Virtual Machine (riscv_vm) is intended for anyone want
    * The VM'sminimal configuration is 2CPU/4G-RAM/20GB-DISK with USB 2.0 enabled
    * To donwload a protable *.osa appliance file, go to:
      - [RISCV_VM *.OVA image on Google Drive](https://drive.google.com/drive/folders/18njYttFpczl-CrHkZ7HQ-lLf-w2fBcL9)
+     - **Size:** 4 GB (3,785,816,576 bytes)
+     - **MDA5:** 29e97756c8cb77f42503ae7ef4ddf876
    * **Note1: that the virtual machine userID /password is _user/abc123_**
    * Note2: an early version of the VM was released with a work-around to comply with 3rd party SW components in the VEGA SDK; for that version, the SDK must must installed directly within the VM following the instructions located [here](https://open-isa.org/get-started/)
    * <span style="color: green"> **Note3: as of Monday September 16th, the VM includes all SW.**</span>
