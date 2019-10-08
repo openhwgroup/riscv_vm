@@ -5,7 +5,7 @@ The OpenHW Group's RISC-V Virtual Machine (riscv_vm) is intended for anyone want
    * RISC-V SW tool chain using the Eclipse-IDE
    * RISC-V Imperas OVPSim model
    * RISC-V Verilator model
-   * The files in the ~/bin directory are used to create the VM Linux image after Ubuntu 18.04LT has been installed. 
+   * The files in the ~/bin directory are used to create the VM Linux image after Ubuntu 18.04LTS has been installed. 
    * The VM'sminimal configuration is 2CPU/4G-RAM/20GB-DISK with USB 2.0 enabled
    * To donwload a protable *.osa appliance file, go to:
      - [RISCV_VM *.OVA image on Google Drive](https://drive.google.com/drive/folders/18njYttFpczl-CrHkZ7HQ-lLf-w2fBcL9)
