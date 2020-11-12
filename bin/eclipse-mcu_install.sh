@@ -1,6 +1,6 @@
 #!/bin/bash
 #------------------------------------------------------------------------------
-# Copyright (c) 2019 BTA Design Services Inc.
+# Copyright (c) 2020 BTA Design Services Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -37,15 +37,15 @@ set -eux
 
 echo "Installing Eclipse-IDE and MCU plugins"; echo""
 cd /home/$USERNAME
-curl -L https://github.com/gnu-mcu-eclipse/org.eclipse.epp.packages/releases/download/v4.5.1-20190101-2018-12/20190101-2023-gnumcueclipse-4.5.1-2018-12-R-linux.gtk.x86_64.tar.gz > 20190101-2023-gnumcueclipse-4.5.1-2018-12-R-linux.gtk.x86_64.tar.gz
+curl -L https://github.com/gnu-mcu-eclipse/org.eclipse.epp.packages/releases/download/v4.7.2-20200127-2019-12/20200127-1311-gnumcueclipse-4.7.2-2019-12-R-linux.gtk.x86_64.tar.gz > latest-gnumcueclipse.tar.gz
 curl -L https://github.com/riscv/riscv-ovpsim/archive/master.zip > riscv-ovpsim-master.zip
 # Extract eclipse that includes GNU MCU plugins, eclipse executable will be ./eclipse/eclipse
-tar xf 20190101-2023-gnumcueclipse-4.5.1-2018-12-R-linux.gtk.x86_64.tar.gz
-
+cd /tools
+tar xf latest-gnumcueclipse.tar.gz
 # Setup RISC-V OVP Simulator
-unzip riscv-ovpsim-master.zip
+cd eclipse
+unzip ../riscv-ovpsim-master.zip
 mv riscv-ovpsim-master riscv-ovpsim
-
 cd /home/$USERNAME
-rm 20190101-2023-gnumcueclipse-4.5.1-2018-12-R-linux.gtk.x86_64.tar.gz riscv-ovpsim-master.zip
+rm latest-gnumcueclipse.tar.gz riscv-ovpsim-master.zip
 

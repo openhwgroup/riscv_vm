@@ -1,6 +1,6 @@
 #!/bin/bash
 #------------------------------------------------------------------------------
-# Copyright (c) 2019 BTA Design Services Inc.
+# Copyright (c) 2020 BTA Design Services Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -42,8 +42,10 @@ pushd verilator
 git pull
 git checkout stable
 autoconf
-./configure 
-make
+unset VERILATOR_ROOT
+./configure --prefix=/tools/verilator 
+make -j
+make test
 make install
 popd
 

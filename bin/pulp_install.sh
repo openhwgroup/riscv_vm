@@ -1,6 +1,6 @@
 #!/bin/bash
 #------------------------------------------------------------------------------
-# Copyright (c) 2019 BTA Design Services Inc.
+# Copyright (c) 2020 BTA Design Services Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ echo "Installing PULP GNU toolchain"; echo""
 cd /home/$USERNAME
 git clone --recursive https://github.com/pulp-platform/pulp-riscv-gnu-toolchain
 cd pulp-riscv-gnu-toolchain
-./configure --prefix=/home/user/pulp --with-arch=rv32imc --with-cmodel=medlow --enable-multilib
+./configure --prefix=/tools/pulp --with-arch=rv32imc --with-cmodel=medlow --enable-multilib
 make
 cd /home/$USERNAME
 rm -rf pulp-riscv-gnu-toolchain

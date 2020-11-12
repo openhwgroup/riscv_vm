@@ -1,6 +1,6 @@
 #!/bin/bash
 #------------------------------------------------------------------------------
-# Copyright (c) 2019 BTA Design Services Inc.
+# Copyright (c) 2020 BTA Design Services Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 # Authors: Alfredo Herrera  (aherrera@btadesignservices.com) 
 #--- 
 # This script installs ubuntu extra packages required for RISC-V tools 
-# which may be used to study, configure as-referred, modify, implement or 
+# which may be used to study, configure as-preferred, modify, implement or 
 # release hardware based on the RISC-V Instruction Set Architecture.
 # The VM is preconfigured for RISC-V HW development.
 #    * RISC-V SW tool chain using the Eclipse-IDE
@@ -45,13 +45,16 @@ export USERNAME=$(logname)
 # libudev package not available
 echo "Updating Ubuntu"; echo""
 
-apt-get install -y openssh-server xauth git-core lsb-core xorg vim-gtk3 dos2unix autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libusb-1.0-0-dev libudev1 libudev-dev g++ openjdk-8-jdk libfl2 libfl-dev links2 cmake ninja-build ccache dfu-util device-tree-compiler python3-pip python3-setuptools python3-tk python3-wheel xz-utils gcc-multilib 
+apt-get install -y openssh-server xauth git lsb-core xorg vim-gtk3 dos2unix autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libusb-1.0-0-dev libudev1 libudev-dev g++ openjdk-8-jdk libfl2 libfl-dev links2 cmake ninja-build ccache dfu-util device-tree-compiler python3-pip python3-setuptools python3-tk python3-wheel xz-utils gcc-multilib 
 
+apt-get update
 apt-get upgrade
 apt-get clean
 apt-get autoremove --purge
 export BINDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd ${BINDIR}
+mkdir /tools
+chown -R user /tools
 
 #--- 
 # Install PULP-Platform GNU toolchain
@@ -61,8 +64,8 @@ sudo -u ${USERNAME} pulp_install.sh
 #---
 # Install Verilator tool
 #---
-verilator_install.sh
-
+sudo -u ${USERNAME} verilator_install.sh
+sudo apt-ger update
 #---
 # Install Elipse-IDE and MCU plugins
 #---
